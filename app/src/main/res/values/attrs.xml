@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SearchBar">
+        <attr name="searchbar_background_color" format="color"/>
+        <attr name="searchbar_edge_color" format="color"/>
+        <attr name="searchbar_searching_color" format="color"/>
+        <attr name="searchbar_stretch_width" format="dimension"/>
+        <attr name="searchbar_stretch_direction" format="integer"/>
+        <attr name="searchbar_stretch" format="boolean"/>
+    </declare-styleable>
+</resources>

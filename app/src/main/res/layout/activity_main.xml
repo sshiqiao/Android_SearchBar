@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:searchBar="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.start.searchbardemo.view.SearchBar
+        android:id="@+id/search_bar_custom"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:hint="@string/app_name"
+        searchBar:searchbar_background_color="@color/colorWhite"
+        searchBar:searchbar_edge_color="@color/colorPrimaryDark"
+        searchBar:searchbar_searching_color="@color/colorAccent"
+        searchBar:searchbar_stretch="true"
+        searchBar:searchbar_stretch_direction="0"
+        searchBar:searchbar_stretch_width="250dp"/>
+    <com.start.searchbardemo.view.SearchBar
+        android:id="@+id/search_bar_default"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="50dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        searchBar:searchbar_stretch_direction="1"
+        android:hint="@string/app_name"/>
+</RelativeLayout>
