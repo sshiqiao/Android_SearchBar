@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        searchBar = (SearchBar)findViewById(R.id.search_bar_custom);
+        searchBar = findViewById(R.id.search_bar_custom);
         searchBar.setOnEditorActionListener(this);
     }
 
@@ -28,16 +28,16 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         doSomething();
         return false;
     }
-    public void doSomething() {
-        Handler handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
 
-                Toast.makeText(getApplicationContext(),"FinishSearching",Toast.LENGTH_SHORT).show();
-                searchBar.finishSearching();
+
+    public void doSomething() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                searchBar.startSearching(false);
+                Toast.makeText(getApplicationContext(),"Search Finished",Toast.LENGTH_SHORT).show();
             }
-        };
-        handler.sendEmptyMessageDelayed(0,3000);
+        }, 3000);
     }
 }

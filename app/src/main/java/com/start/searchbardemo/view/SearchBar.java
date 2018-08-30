@@ -18,7 +18,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import com.start.searchbardemo.R;
-import com.start.searchbardemo.utils.Utils;
 
 
 /**
@@ -77,14 +76,14 @@ public class SearchBar extends AppCompatEditText implements View.OnTouchListener
         searchBarBackgroundColor = typedArray.getColor(R.styleable.SearchBar_searchbar_background_color,Color.WHITE);
         searchBarEdgeColor = typedArray.getColor(R.styleable.SearchBar_searchbar_edge_color,Color.BLACK);
         searchBarSearchingColor = typedArray.getColor(R.styleable.SearchBar_searchbar_searching_color,Color.WHITE);
-        searchBarStretchWidth = typedArray.getDimension(R.styleable.SearchBar_searchbar_stretch_width,Utils.dp2px(context, 250));
+        searchBarStretchWidth = typedArray.getDimension(R.styleable.SearchBar_searchbar_stretch_width,dp2px(context, 250));
         searchBarStretchDirection = typedArray.getInteger(R.styleable.SearchBar_searchbar_stretch_direction,0)==0?SearchBarStretchDirection.SEARCHBAR_STRETCH_LEFT:SearchBarStretchDirection.SEARCHBAR_STRETCH_RIGHT;
         isStartSearch = false;
         rotateDegrees = 0;
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(searchBarEdgeColor);
-        mPaint.setStrokeWidth(Utils.dp2px(context,2));
+        mPaint.setStrokeWidth(dp2px(context,2));
         mPaint.setStyle(Paint.Style.STROKE);
 
         touchState = isStretch?TouchState.TOUCH_UP_STATE:TouchState.TOUCH_CANCEL_STATE;
@@ -260,7 +259,7 @@ public class SearchBar extends AppCompatEditText implements View.OnTouchListener
         ShapeDrawable edgeDrawable = new ShapeDrawable();
         edgeDrawable.setShape(roundRectShape);
         edgeDrawable.getPaint().setStyle(Paint.Style.STROKE);
-        edgeDrawable.getPaint().setStrokeWidth(Utils.dp2px(context, 2));
+        edgeDrawable.getPaint().setStrokeWidth(dp2px(context, 2));
         edgeDrawable.getPaint().setColor(searchBarEdgeColor);
 
 
@@ -280,12 +279,17 @@ public class SearchBar extends AppCompatEditText implements View.OnTouchListener
             layerDrawable = new LayerDrawable(layers);
         }
 
-        searchBarEdgePadding = (int)(mPaint.getStrokeWidth()+Utils.dp2px(context, 5));
+        searchBarEdgePadding = (int)(mPaint.getStrokeWidth()+dp2px(context, 5));
         layerDrawable.setLayerInset(0, searchBarEdgePadding, searchBarEdgePadding, searchBarEdgePadding, searchBarEdgePadding);
         layerDrawable.setLayerInset(1, searchBarEdgePadding, searchBarEdgePadding, searchBarEdgePadding, searchBarEdgePadding);
 
         setBackground(layerDrawable);
 
+    }
+
+    public static float dp2px(Context context, int dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (float) (dpValue * scale + 0.5);
     }
 
     enum SearchBarStretchDirection {
